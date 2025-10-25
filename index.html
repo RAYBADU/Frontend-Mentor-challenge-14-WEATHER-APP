@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>Frontend Mentor | Weather app</title>
+  </head>
+  <body
+    class="bg-[hsl(243,96%,9%)] font-[Bricolage_Grotesque] container mx-auto"
+  >
+    <!-- LOGO AND MERTRICS -->
+
+    <nav class="flex justify-between px-2 py-4 text-white">
+      <img src="./assets/images/logo.svg" alt="" class="w-40 md:w-60" />
+      <div class="relative" id="drop-down">
+        <button
+          class="bg-[hsl(243,23%,24%)] px-3 py-3 rounded-md flex items-center space-x-2 cursor-pointer max-md:text-sm"
+        >
+          <img src="./assets/images/icon-units.svg" alt="" />
+          <span class="">Units</span>
+          <img src="./assets/images/icon-dropdown.svg" alt="" />
+        </button>
+        <!-- Dropdown -->
+        <div
+          id="unitsDropdown"
+          class="bg-[#25253f] absolute left-0 w-35 max-md:text-sm max-md:p-1 max-md:right-2 mt-4 shadow-lg rounded-md py-2 z-[1000] opacity-0 transition-all duration-400"
+        >
+          <p class="font-bold text-center">Temperature</p>
+          <button
+            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer"
+          >
+            Celcius (°C)
+          </button>
+          <button
+            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer" id="fahrenheit-btn"
+          >
+            Fahrenheit (°F)
+          </button>
+          <p class="font-bold text-center mt-4">Wind Speed</p>
+
+          <button
+            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer"
+          >
+            Km/h
+          </button>
+          <button
+            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer"
+          >
+            Mph
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="py-5 container mx-auto">
+      <h1 class="text-white mt-15 text-2xl md:text-5xl font-bold text-center">
+        How's the sky looking today?
+      </h1>
+
+      <!-- INPUT & BUTTON -->
+      <div
+        class="flex max-md:block max-md:text-center justify-center space-x-5 mt-8"
+      >
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search for a place..."
+            class="bg-[hsl(243,23%,30%)] py-2 px-20 rounded-md text-white relative outline-none"
+            id="input"
+          />
+          <div>
+            <img
+              src="./assets/images/icon-search.svg"
+              alt=""
+              class="absolute left-5 bottom-2 cursor-pointer max-md:left-30 max-md:hidden"
+            />
+          </div>
+        </div>
+        <button
+          class="bg-[hsl(233,67%,56%)] rounded-md px-4 py-2 text-white cursor-pointer hover:opacity-[0.8] transition-all max-md:w-90 max-md:mt-4"
+          id="search-btn"
+        >
+          Search
+        </button>
+      </div>
+      <!-- FLEXING DIVS -->
+      <div class="flex max-md:block justify-center space-x-5 mt-10 text-white">
+        <!-- first div -->
+        <div class="p-2 max-md:w-90 max-md:mx-auto">
+          <div
+            class="flex justify-between w-180 max-md:w-70 h-60 max-md:h-65 rounded-xl mx-auto relative"
+          >
+            <img
+              src="./assets/images/bg-today-large.svg"
+              alt=""
+              class="w-full h-full rounded-xl object-cover"
+            />
+
+            <div
+              class="flex max-md:block max-md:text-center items-center justify-between absolute top-1/5 px-1 text-white px-8"
+            >
+              <div>
+                <p class="text-xl md:text-3xl font-semibold" id="city&country">
+                  Berlin, Germany
+                </p>
+                <p class="mt-4 text-gray-200" id="day-details">
+                  Tuesday August 5, 2025
+                </p>
+              </div>
+              <!-- Temperature -->
+              <div class="flex space-x-4">
+                <img
+                  src="./assets/images/icon-sunny.webp"
+                  alt=""
+                  class="w-30"
+                  id="condition-logo"
+                />
+                <img
+                  src="./assets/images/icon-snow.webp"
+                  alt=""
+                  class="w-20 mx-auto hidden"
+                  id="snow-logo"
+                />
+               <div class="flex items-center">
+                 <p class="text-4xl md:text-6xl font-bold mt-5" id="temperature">
+                  20 
+                </p>
+                <span class="text-5xl">°</span>
+               </div>
+              </div>
+            </div>
+          </div>
+          <!-- four divs displaying other weather conditions -->
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 place-items-center max-md:space-y-2 mt-8"
+          >
+            <div
+              class="bg-[hsl(243,23%,30%)] w-35 h-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Feels like</p>
+
+             <div class="flex items-center"> <p class="mt-5 text-xl ml-10" id="feels-like">18</p>
+              <p>°</p></div>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-35 h-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Humidity</p>
+              <p class="mt-5 text-xl" id="humidity">46%</p>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-35 h-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Wind</p>
+              <p class="mt-5 text-xl" id="wind">14km/h</p>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-35 h-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Precipitation</p>
+              <p class="mt-5 text-xl" id="precipitation">0mm</p>
+            </div>
+          </div>
+
+          <!-- Daily weather conditions -->
+          <p class="mt-8 font-semibold">Daily Forecast</p>
+          <div
+            class="grid grid-cols-7 place-items-center max-md:grid-cols-3 max-md:space-y-2 space-x-2 py-4"
+          >
+            <div
+              class="bg-[hsl(243,23%,30%)] w-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Tue</p>
+              <img
+                src="./assets/images/icon-rain.webp"
+                alt=""
+                class="w-20 mx-auto"
+              />
+              <div class="flex justify-between items-center">
+                <p class="text-gray-200">20°</p>
+                <p class="text-gray-200">14°</p>
+              </div>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Wed</p>
+              <img
+                src="./assets/images/icon-drizzle.webp"
+                alt=""
+                class="w-20 mx-auto"
+              />
+              <div class="flex justify-between items-center">
+                <p class="text-gray-200">21°</p>
+                <p class="text-gray-200">15°</p>
+              </div>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Thu</p>
+              <img
+                src="./assets/images/icon-sunny.webp"
+                alt=""
+                class="w-20 mx-auto"
+              />
+              <div class="flex justify-between items-center">
+                <p class="text-gray-200">24°</p>
+                <p class="text-gray-200">14°</p>
+              </div>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Fri</p>
+              <img
+                src="./assets/images/icon-partly-cloudy.webp"
+                alt=""
+                class="w-20 mx-auto"
+              />
+              <div class="flex justify-between items-center">
+                <p class="text-gray-200">25°</p>
+                <p class="text-gray-200">13°</p>
+              </div>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Sat</p>
+              <img
+                src="./assets/images/icon-storm.webp"
+                alt=""
+                class="w-20 mx-auto"
+              />
+              <div class="flex justify-between items-center">
+                <p class="text-gray-200">21°</p>
+                <p class="text-gray-200">15°</p>
+              </div>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Sun</p>
+              <img
+                src="./assets/images/icon-snow.webp"
+                alt=""
+                class="w-20 mx-auto"
+                id="snow-logo"
+              />
+              <div class="flex justify-between items-center">
+                <p class="text-gray-200">25°</p>
+                <p class="text-gray-200">16°</p>
+              </div>
+            </div>
+            <div
+              class="bg-[hsl(243,23%,30%)] w-25 text-center text-white p-4 rounded-lg"
+            >
+              <p>Mon</p>
+              <img
+                src="./assets/images/icon-fog.webp"
+                alt=""
+                class="w-20 mx-auto"
+              />
+              <div class="flex justify-between items-center">
+                <p class="text-gray-200">24°</p>
+                <p class="text-gray-200">15°</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- second div -->
+        <div
+          class="w-80 h-full rounded-xl bg-[#25253e] p-2 max-md:mx-auto max-md:mt-5"
+        >
+          <div class="flex justify-between items-center space-x-5">
+            <p class="font-semibold">Hourly Forecast</p>
+            <button class="px-2 py-1 bg-[hsl(243,23%,24%)] rounded-md">
+              Tuesday
+            </button>
+          </div>
+
+          <div class="block space-y-4 mt-2">
+            <div
+              class="bg-[#2f2f49] rounded-xl w-full h-12 flex items-center justify-between px-2"
+            >
+              <div>
+                <img
+                  src="./assets/images/icon-overcast.webp"
+                  alt=""
+                  class="w-10 inline"
+                />
+                <p class="inline">3PM</p>
+              </div>
+              <p>20°</p>
+            </div>
+            <div
+              class="bg-[#2f2f49] rounded-xl w-full h-12 flex items-center justify-between px-2"
+            >
+              <div>
+                <img
+                  src="./assets/images/icon-partly-cloudy.webp"
+                  alt=""
+                  class="w-10 inline"
+                />
+                <p class="inline">4PM</p>
+              </div>
+              <p>20°</p>
+            </div>
+            <div
+              class="bg-[#2f2f49] rounded-xl w-full h-12 flex items-center justify-between px-2"
+            >
+              <div>
+                <img
+                  src="./assets/images/icon-sunny.webp"
+                  alt=""
+                  class="w-10 inline"
+                />
+                <p class="inline">5PM</p>
+              </div>
+              <p>20°</p>
+            </div>
+            <div
+              class="bg-[#2f2f49] rounded-xl w-full h-12 flex items-center justify-between px-2"
+            >
+              <div>
+                <img
+                  src="./assets/images/icon-overcast.webp"
+                  alt=""
+                  class="w-10 inline"
+                />
+                <p class="inline">6PM</p>
+              </div>
+              <p>19°</p>
+            </div>
+            <div
+              class="bg-[#2f2f49] rounded-xl w-full h-12 flex items-center justify-between px-2"
+            >
+              <div>
+                <img
+                  src="./assets/images/icon-rain.webp"
+                  alt=""
+                  class="w-10 inline"
+                />
+                <p class="inline">7PM</p>
+              </div>
+              <p>18°</p>
+            </div>
+            <div
+              class="bg-[#2f2f49] rounded-xl w-full h-12 flex items-center justify-between px-2"
+            >
+              <div>
+                <img
+                  src="./assets/images/icon-fog.webp"
+                  alt=""
+                  class="w-10 inline"
+                />
+                <p class="inline">8PM</p>
+              </div>
+              <p>18°</p>
+            </div>
+            <div
+              class="bg-[#2f2f49] rounded-xl w-full h-12 flex items-center justify-between px-2"
+            >
+              <div>
+                <img
+                  src="./assets/images/icon-rain.webp"
+                  alt=""
+                  class="w-10 inline"
+                />
+                <p class="inline">9PM</p>
+              </div>
+              <p>17°</p>
+            </div>
+            <div
+              class="bg-[#2f2f49] rounded-xl w-full h-12 flex items-center justify-between px-2"
+            >
+              <div>
+                <img
+                  src="./assets/images/icon-overcast.webp"
+                  alt=""
+                  class="w-10 inline"
+                />
+                <p class="inline">10PM</p>
+              </div>
+              <p>17°</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<!-- not responsive on tablets -->

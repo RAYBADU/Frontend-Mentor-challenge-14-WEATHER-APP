@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden scroll-smooth" >
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +24,7 @@
   >
     <!-- LOGO AND MERTRICS -->
 
-    <nav class="flex justify-between px-2 py-4 text-white">
+    <nav class="flex justify-between px-2 py-4 text-white ">
       <img src="./assets/images/logo.svg" alt="" class="w-40 md:w-60" />
       <div class="relative" id="drop-down">
         <button
@@ -71,33 +71,33 @@
       <h1 class="text-white mt-15 text-2xl md:text-5xl font-bold text-center">
         How's the sky looking today?
       </h1>
+<!-- INPUT & BUTTON -->
+<div
+  class="flex justify-center space-x-5 mt-8 max-md:flex-col max-md:items-center max-md:space-x-0 max-md:space-y-4"
+>
+  <div class="relative max-md:w-[90%] w-auto">
+    <input
+      type="text"
+      placeholder="Search for a place..."
+      class="bg-[hsl(243,23%,30%)] py-2 px-20 rounded-md text-white outline-none w-full text-center"
+      id="input"
+    />
+    <img
+      src="./assets/images/icon-search.svg"
+      alt=""
+      class="absolute left-5 bottom-2 cursor-pointer max-md:hidden"
+    />
+  </div>
 
-      <!-- INPUT & BUTTON -->
-      <div
-        class="flex max-md:block max-md:text-center justify-center space-x-5 mt-8"
-      >
-        <div class="relative">
-          <input
-            type="text"
-            placeholder="Search for a place..."
-            class="bg-[hsl(243,23%,30%)] py-2 px-20 rounded-md text-white relative outline-none"
-            id="input"
-          />
-          <div>
-            <img
-              src="./assets/images/icon-search.svg"
-              alt=""
-              class="absolute left-5 bottom-2 cursor-pointer max-md:left-30 max-md:hidden"
-            />
-          </div>
-        </div>
-        <button
-          class="bg-[hsl(233,67%,56%)] rounded-md px-4 py-2 text-white cursor-pointer hover:opacity-[0.8] transition-all max-md:w-90 max-md:mt-4"
-          id="search-btn"
-        >
-          Search
-        </button>
-      </div>
+  <button
+    class="bg-[hsl(233,67%,56%)] rounded-md px-4 py-2 text-white cursor-pointer hover:opacity-[0.8] transition-all max-md:w-[90%]"
+    id="search-btn"
+  >
+    Search
+  </button>
+</div>
+
+
       <!-- FLEXING DIVS -->
       <div class="flex max-md:block justify-center space-x-5 mt-10 text-white">
         <!-- first div -->

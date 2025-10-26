@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>ERROR</title>
+  </head>
+  <body
+    class="bg-[hsl(243,96%,9%)] font-[Bricolage_Grotesque] container mx-auto overflow-x-hidden"
+  >
+    <!-- LOGO AND MERTRICS -->
+
+    <nav class="flex justify-between px-2 py-4 text-white">
+      <img
+        src="./assets/images/logo.svg"
+        alt=""
+        class="w-40 md:w-60 cursor-pointer"
+      />
+      <div class="relative" id="drop-down">
+        <button
+          class="bg-[hsl(243,23%,24%)] px-3 py-3 rounded-md flex items-center space-x-2 cursor-pointer max-md:text-sm"
+        >
+          <img src="./assets/images/icon-units.svg" alt="" />
+          <span class="">Units</span>
+          <img src="./assets/images/icon-dropdown.svg" alt="" />
+        </button>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="py-5 container mx-auto text-center text-white">
+      <img
+        src="./assets/images/icon-error.svg"
+        alt=""
+        class="mx-auto w-8 md:w-13"
+      />
+      <h1 class="text-2xl md:text-5xl mt-5 font-semibold">
+        Something went wrong
+      </h1>
+      <p class="py-5 text-gray-300 text-sm md:text-lg">
+        We couldn't connect to the server (API error). Please try <br />
+        again in a few moments
+      </p>
+      <button
+        onclick="homePage()"
+        class="px-5 py-2 text-sm md:text-lg rounded-lg bg-[#2f2f49] hover:bg-[#2f2f59] transition-all duration-400 cursor-pointer inline"
+      >
+        <img
+          src="./assets/images/icon-retry.svg"
+          alt=""
+          class="inline px-2"
+        />Retry
+      </button>
+    </main>
+    <script>
+      function homePage() {
+        return (window.location.href = "index.html");
+      }
+    </script>
+  </body>
+</html>
+
+<!-- not responsive on tablets -->

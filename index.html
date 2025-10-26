@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="overflow-x-hidden scroll-smooth" >
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,12 +20,16 @@
     <title>Frontend Mentor | Weather app</title>
   </head>
   <body
-    class="bg-[hsl(243,96%,9%)] font-[Bricolage_Grotesque] container mx-auto"
+    class="bg-[hsl(243,96%,9%)] font-[Bricolage_Grotesque,sans] container mx-auto overflow-x-hidden"
   >
     <!-- LOGO AND MERTRICS -->
 
-    <nav class="flex justify-between px-2 py-4 text-white ">
-      <img src="./assets/images/logo.svg" alt="" class="w-40 md:w-60" />
+    <nav class="flex justify-between px-2 py-4 text-white">
+      <img
+        src="./assets/images/logo.svg"
+        alt=""
+        class="w-40 md:w-60 cursor-pointer"
+      />
       <div class="relative" id="drop-down">
         <button
           class="bg-[hsl(243,23%,24%)] px-3 py-3 rounded-md flex items-center space-x-2 cursor-pointer max-md:text-sm"
@@ -42,11 +46,13 @@
           <p class="font-bold text-center">Temperature</p>
           <button
             class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer"
+            id="celsius-btn"
           >
-            Celcius (°C)
+            Celsius (°C)
           </button>
           <button
-            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer" id="fahrenheit-btn"
+            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer"
+            id="fahrenheit-btn"
           >
             Fahrenheit (°F)
           </button>
@@ -71,32 +77,53 @@
       <h1 class="text-white mt-15 text-2xl md:text-5xl font-bold text-center">
         How's the sky looking today?
       </h1>
-<!-- INPUT & BUTTON -->
-<div
-  class="flex justify-center space-x-5 mt-8 max-md:flex-col max-md:items-center max-md:space-x-0 max-md:space-y-4"
->
-  <div class="relative max-md:w-[90%] w-auto">
-    <input
-      type="text"
-      placeholder="Search for a place..."
-      class="bg-[hsl(243,23%,30%)] py-2 px-20 rounded-md text-white outline-none w-full text-center"
-      id="input"
-    />
-    <img
-      src="./assets/images/icon-search.svg"
-      alt=""
-      class="absolute left-5 bottom-2 cursor-pointer max-md:hidden"
-    />
-  </div>
+      <!-- INPUT & BUTTON -->
+      <div
+        class="flex justify-center space-x-5 mt-8 max-md:flex-col max-md:items-center max-md:space-x-0 max-md:space-y-4"
+      >
+        <div class="relative max-md:w-[90%] w-auto">
+          <input
+            type="text"
+            placeholder="Search for a place..."
+            class="bg-[hsl(243,23%,30%)] py-2 px-20 rounded-md text-white outline-none w-full text-center"
+            id="input"
+          />
+          <img
+            src="./assets/images/icon-search.svg"
+            alt=""
+            class="absolute left-5 bottom-2 cursor-pointer max-md:hidden"
+          />
+          <!-- drop-down for input -->
+          <div
+            class="absolute bg-[#25253f] mt-4 p-2 text-white w-[100%] h-auto rounded-sm z-[1000] shadow-lg space-y-2 opacity-0 transition-all duration-300 -translate-y-5 pointer-events-none"
+            id="input-dropdown"
+          >
+          <button class="text-xl md:text-3xl absolute top-0 right-5 cursor-pointer" id="close-input">&times</button>
+            <button
+              class="text-left w-full px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer mt-4  city-name"
+            >
+              New York
+            </button>
+            <button
+              class="text-left w-full px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer city-name"
+            >
+              Takoradi
+            </button>
+            <button
+              class="text-left w-full px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer city-name"
+            >
+              Moscow
+            </button>
+          </div>
+        </div>
 
-  <button
-    class="bg-[hsl(233,67%,56%)] rounded-md px-4 py-2 text-white cursor-pointer hover:opacity-[0.8] transition-all max-md:w-[90%]"
-    id="search-btn"
-  >
-    Search
-  </button>
-</div>
-
+        <button
+          class="bg-[hsl(233,67%,56%)] rounded-md px-4 py-2 text-white cursor-pointer hover:opacity-[0.8] transition-all max-md:w-[90%]"
+          id="search-btn"
+        >
+          Search
+        </button>
+      </div>
 
       <!-- FLEXING DIVS -->
       <div class="flex max-md:block justify-center space-x-5 mt-10 text-white">
@@ -136,12 +163,15 @@
                   class="w-20 mx-auto hidden"
                   id="snow-logo"
                 />
-               <div class="flex items-center">
-                 <p class="text-4xl md:text-6xl font-bold mt-5" id="temperature">
-                  20 
-                </p>
-                <span class="text-5xl">°</span>
-               </div>
+                <div class="flex items-center">
+                  <p
+                    class="text-4xl md:text-7xl font-bold mt-5 italic"
+                    id="temperature"
+                  >
+                    20
+                  </p>
+                  <span class="text-6xl italic font-semibold">°</span>
+                </div>
               </div>
             </div>
           </div>
@@ -154,8 +184,10 @@
             >
               <p>Feels like</p>
 
-             <div class="flex items-center"> <p class="mt-5 text-xl ml-10" id="feels-like">18</p>
-              <p>°</p></div>
+              <div class="flex items-center">
+                <p class="mt-5 text-xl ml-10" id="feels-like">18</p>
+                <p>°</p>
+              </div>
             </div>
             <div
               class="bg-[hsl(243,23%,30%)] w-35 h-25 text-center text-white p-4 rounded-lg"
@@ -408,5 +440,3 @@
     <script src="app.js"></script>
   </body>
 </html>
-
-<!-- not responsive on tablets -->

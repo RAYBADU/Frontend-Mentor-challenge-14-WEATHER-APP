@@ -59,12 +59,12 @@
           <p class="font-bold text-center mt-4">Wind Speed</p>
 
           <button
-            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer"
+            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer" 
           >
             Km/h
           </button>
           <button
-            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer"
+            class="block w-full text-left px-3 py-1 hover:bg-[#2f2f49] focus:bg-gray-600 cursor-pointer" id="mph-btn"
           >
             Mph
           </button>
@@ -158,7 +158,7 @@
                   id="condition-logo"
                 />
                 <img
-                  src="./assets/images/icon-snow.webp"
+                  src="./assets/images/icon-overcast.webp"
                   alt=""
                   class="w-20 mx-auto hidden"
                   id="snow-logo"
@@ -199,7 +199,10 @@
               class="bg-[hsl(243,23%,30%)] w-35 h-25 text-center text-white p-4 rounded-lg"
             >
               <p>Wind</p>
-              <p class="mt-5 text-xl" id="wind">14km/h</p>
+              <div class="flex items-center">
+                <p class="mt-5 text-xl ml-8" id="wind">14</p>
+              <p class="mt-5">km/h</p>
+              </div>
             </div>
             <div
               class="bg-[hsl(243,23%,30%)] w-35 h-25 text-center text-white p-4 rounded-lg"

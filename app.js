@@ -18,9 +18,8 @@ const apiKey = "3a19cc9ae9d83c689c591380a068baa5";
 searchBtn.addEventListener("click", () => {
   const city = input.value;
   if (city === "") {
-   alert("Please Enter a City First")
+    alert("Please Enter a City First");
   } else {
-
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
     )
@@ -45,7 +44,7 @@ searchBtn.addEventListener("click", () => {
 
         feelsLike.innerHTML = `<p>${feelslike}</p>`;
         humidity.innerHTML = `<p>${humi}%</p>`;
-        wind.innerHTML = `<p>${windy}km/h</p>`;
+        wind.innerHTML = `<p>${windy}</p>`;
         function date() {
           dayAndMonth.innerHTML = new Date();
         }
@@ -56,10 +55,9 @@ searchBtn.addEventListener("click", () => {
         window.location.href = "error-state.html";
       });
   }
-inputDropdown.classList.remove("opacity-100")
-  inputDropdown.classList.add("pointer-events-none")
-  inputDropdown.classList.add("-translate-y-5")
-  
+  inputDropdown.classList.remove("opacity-100");
+  inputDropdown.classList.add("pointer-events-none");
+  inputDropdown.classList.add("-translate-y-5");
 });
 
 // HANDLES THE DROP DOWN IN THE NAV
@@ -89,26 +87,38 @@ fahrenheitBtn.addEventListener("click", () => {
   feelsLike.textContent = celsiusToFahrenheit(feelsLike.textContent).toFixed(1);
 });
 
-
 // Some city names suggestions beneath the input
-const inputDropdown = document.getElementById("input-dropdown")
-const closeInputBtn = document.getElementById("close-input")
-input.addEventListener("click", ()=>{
-  inputDropdown.classList.add("opacity-100")
-  inputDropdown.classList.remove("pointer-events-none")
-  inputDropdown.classList.remove("-translate-y-5")
-  
-
-})
+const inputDropdown = document.getElementById("input-dropdown");
+const closeInputBtn = document.getElementById("close-input");
+input.addEventListener("click", () => {
+  inputDropdown.classList.add("opacity-100");
+  inputDropdown.classList.remove("pointer-events-none");
+  inputDropdown.classList.remove("-translate-y-5");
+});
 // Close button on the input drop-down menu
-closeInputBtn.addEventListener("click", ()=>{
-  inputDropdown.classList.remove("opacity-100")
-  inputDropdown.classList.add("pointer-events-none")
-  inputDropdown.classList.add("-translate-y-5")
+closeInputBtn.addEventListener("click", () => {
+  inputDropdown.classList.remove("opacity-100");
+  inputDropdown.classList.add("pointer-events-none");
+  inputDropdown.classList.add("-translate-y-5");
+});
+inputDropdown.addEventListener("click", (e) => {
+  if (e.target.classList.contains("city-name")) {
+    input.value = e.target.textContent;
+    inputDropdown.classList.remove("opacity-100");
+    inputDropdown.classList.add("pointer-events-none");
+    inputDropdown.classList.add("-translate-y-5");
+  }
+});
+// KM/H TO MPH
+function kilometersToMph(kilometer){
+return (kilometer * 0.6211371).toFixed(2)
+}
+const kilometerBtn = document.getElementById("mph-btn")
+kilometerBtn.addEventListener("click", ()=>{
+wind.textContent = kilometersToMph(wind.textContent)
 })
-inputDropdown.addEventListener("click", (e)=>{
-if (e.target.classList.contains("city-name")) {
-  input.value = e.target.textContent
-}    
-  
-})
+
+// MPH TO KM/H
+function mphToKilometers(mph){
+  return (mph * 1.60934).toFixed(2)
+}
